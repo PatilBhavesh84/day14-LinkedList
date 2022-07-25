@@ -4,9 +4,9 @@ public class Main {
 	
 		public static void main(String[] args) {
 		LinkedList list = new LinkedList();
-		list.addValue(70);
-		list.addValue(30);
-		list.addValue(56);
+		list.addFirst(56);
+		list.addLast(30);
+		list.addLast(70);
 		list.display();
 	}
 }

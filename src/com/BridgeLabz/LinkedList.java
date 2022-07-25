@@ -20,13 +20,14 @@ public class LinkedList {
 	}
 
 	public void display() {
+		
 		Node temp = head;
 		while (temp != null) {
 			System.out.print(temp.value+"->");
 			temp = temp.next;
 		}
 	}
-	public void addValue(int val) {
+	public void addFirst(int val) {
 		Node node = new Node(val);
 		node.next = head;
 		head = node;
@@ -35,5 +36,16 @@ public class LinkedList {
 			tail = head;
 		}
 		size += 1;
+	}
+	public void addLast(int val) {
+		if (tail == null) {
+			addFirst(val);
+			return;
+		}
+		Node node = new Node(val);
+		tail.next = node;
+		tail = node;
+
+
 	}
 }
