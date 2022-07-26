@@ -7,7 +7,7 @@ public class Main {
 		list.addFirst(56);
 		list.addLast(30);
 		list.addLast(70);
-		list.deleteFirst();
+		list.deleteLast();
 		list.display();
 	}
 }
