@@ -13,26 +13,22 @@ public class LinkedList {
 		public Node(int value) {
 			this.value = value;
 		}
-
 		public Node(int value, Node next) { 
 			this.value = value;
 			this.next = next;
 		}
 	}
-
 	public LinkedList() {
 		this.size = 0;
 	}
-
 	public void display() {
 		Node temp = head;
 		while (temp != null) {
-			System.out.print(temp.value +"-");
+			System.out.print(temp.value +"->");
 			temp = temp.next;
 		}
 		System.out.println();
 	}
-
 	public void addFirst(int val) {
 		Node node = new Node(val);
 		node.next = head;
@@ -43,7 +39,6 @@ public class LinkedList {
 		}
 		size += 1;
 	}
-
 	public void addLast(int val) {
 		if (tail == null) {
 			addFirst(val);
@@ -54,7 +49,6 @@ public class LinkedList {
 		tail = node;
 		size++;
 	}
-
 	public void insertValAtIndex(int val, int index) {
 		if (index == 0) {
 			addFirst(val);
@@ -64,15 +58,15 @@ public class LinkedList {
 			addLast(val);
 			return;
 		}
-
 		Node temp = head;
 		for (int i = 1; i < index; i++) {
 			temp = temp.next;
 		}
-
-		Node node = new Node(val, temp.next);
-		temp.next = node;
-		size++;
 	}
-
+	public void deleteFirst(){
+		if(head==null){
+			return;
+		}
+		head = head.next;
+	}
 }
