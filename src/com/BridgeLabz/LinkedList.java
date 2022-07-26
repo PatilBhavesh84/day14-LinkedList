@@ -69,6 +69,15 @@ public class LinkedList {
 		temp.next = node;
 		size++;
 	}
+	 public int deleteFirst() {
+	        int val = head.value;
+	        head = head.next;
+	        if (head == null) {
+	            tail = null;
+	        }
+	        size--;
+	        return val;
+	 }
 
 	public Node get(int index) {
 		Node node = head;
@@ -78,6 +87,17 @@ public class LinkedList {
 		return node;
 
 	}
+	 public int deleteLast() {
+	        if (size <= 1) {
+	            return deleteFirst();
+	        }
+	        Node secondLast = get(size - 2);
+	        int val = tail.value;
+	        tail = secondLast;
+	        tail.next = null;
+	        size--;
+	        return val;
+	 }
 	public int findNode(int value) {
 		Node node = head;
 		int index=0;
@@ -93,6 +113,21 @@ public class LinkedList {
 	public void insertAfter(int givenValue ,int value) {
 		int index = findNode(value);
 		insertValAtIndex(givenValue,index+1);  	
+	}
+	public int deleteIndex(int index) {
+		if (index == 0) {
+			return deleteFirst();
+		}
+		if (index == size - 1) {
+			return deleteLast();
+		}
+
+		Node prev = get(index - 1);
+		int val = prev.next.value;
+
+		prev.next = prev.next.next;
+		size--;
+		return val;
 	}
 	public void displaySize() {
 		System.out.println("Size of list is "+size);
