@@ -69,35 +69,33 @@ public class LinkedList {
 		temp.next = node;
 		size++;
 	}
-	 public int deleteFirst() {
-	        int val = head.value;
-	        head = head.next;
-	        if (head == null) {
-	            tail = null;
-	        }
-	        size--;
-	        return val;
-	 }
-
+	public int deleteFirst() {
+		int val = head.value;
+		head = head.next;
+		if (head == null) {
+			tail = null;
+		}
+		size--;
+		return val;
+	}
 	public Node get(int index) {
 		Node node = head;
 		for (int i = 0; i < index; i++) {
 			node = node.next;
 		}
 		return node;
-
 	}
-	 public int deleteLast() {
-	        if (size <= 1) {
-	            return deleteFirst();
-	        }
-	        Node secondLast = get(size - 2);
-	        int val = tail.value;
-	        tail = secondLast;
-	        tail.next = null;
-	        size--;
-	        return val;
-	 }
+	public int deleteLast() {
+		if (size <= 1) {
+			return deleteFirst();
+		}
+		Node secondLast = get(size - 2);
+		int val = tail.value;
+		tail = secondLast;
+		tail.next = null;
+		size--;
+		return val;
+	}
 	public int findNode(int value) {
 		Node node = head;
 		int index=0;
@@ -131,5 +129,44 @@ public class LinkedList {
 	}
 	public void displaySize() {
 		System.out.println("Size of list is "+size);
+	}
+	public void sort() {
+		sort(size - 1, 0);
+	}
+
+	private void sort(int row, int col) {
+		if (row == 0) {
+			return;
+		}
+
+		if (col < row) {
+			Node first = get(col);
+			Node second = get(col + 1);
+
+			if (first.value > second.value) {
+				// swap
+				if (first == head) {
+					head = second;
+					first.next = second.next;
+					second.next = first;
+				} 
+				else if (second == tail) {
+					Node prev = get(col - 1);
+					prev.next = second;
+					tail = first;
+					first.next = null;
+					second.next = tail;
+				} 
+				else {
+					Node prev = get(col - 1);
+					prev.next = second;
+					first.next = second.next;
+					second.next = first;
+				}
+			}
+			sort(row, col + 1);
+		} else {
+			sort(row - 1, 0);
+		}
 	}
 }
