@@ -84,10 +84,17 @@ public class LinkedList {
 		while (node != null) {
 			if (node.value == value) {
 				index++;
-				System.out.println(value+" is on "+index+" index");
+				System.out.println(value+" Index is "+index);
 			}
 			node = node.next;
 		}
 		return index;
+	}
+	public void insertAfter(int givenValue ,int value) {
+		int index = findNode(value);
+		insertValAtIndex(givenValue,index+1);  	
+	}
+	public void displaySize() {
+		System.out.println("Size of list is "+size);
 	}
 }
