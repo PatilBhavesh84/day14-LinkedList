@@ -30,6 +30,7 @@ public class LinkedList {
 	}
 	public void addFirst(int val) {
 		Node node = new Node(val);
+
 		node.next = head;
 		head = node;
 
@@ -68,31 +69,25 @@ public class LinkedList {
 		temp.next = node;
 		size++;
 	}
-	public int deleteFirst() {
-		int val = head.value;
-		head = head.next;
-		if (head == null) {
-			tail = null;
-		}
-		size--;
-		return val;
-	}
+
 	public Node get(int index) {
 		Node node = head;
 		for (int i = 0; i < index; i++) {
 			node = node.next;
 		}
 		return node;
+
 	}
-	public int deleteLast() {
-		if (size <= 1) {
-			return deleteFirst();
+	public int findNode(int value) {
+		Node node = head;
+		int index=0;
+		while (node != null) {
+			if (node.value == value) {
+				index++;
+				System.out.println(value+" is on "+index+" index");
+			}
+			node = node.next;
 		}
-		Node secondLast = get(size - 2);
-		int val = tail.value;
-		tail = secondLast;
-		tail.next = null;
-		size--;
-		return val;
+		return index;
 	}
 }
